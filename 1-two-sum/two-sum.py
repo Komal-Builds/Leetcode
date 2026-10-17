@@ -6,10 +6,9 @@ class Solution(object):
         :rtype: List[int]
         """
         n = len(nums)
-        hashmap = {}
-        for i in range(0,n):
-            remaning = target - nums[i]
-            if remaning in hashmap:
-                return [hashmap [remaning],i]
-            hashmap[nums[i]] = i    
-        
+        for i in range(n):
+            for j in range(i+1,n):
+                if nums[i]+nums[j] == target:
+
+
+                    return[i, j]
