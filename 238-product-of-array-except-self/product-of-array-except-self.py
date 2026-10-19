@@ -4,21 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        n = len(nums)
-        answer = [1]*n
-        #prefix products
+        res = [1] * (len(nums))
         prefix = 1
-        for i in range(n):
-            answer[i] = prefix
+        for i in range(len(nums)):
+            res[i] = prefix
             prefix *= nums[i]
-        #sufix products
-        suffix = 1
-        for i in range(n - 1, -1, -1): 
-            answer[i] *= suffix
-            suffix *= nums[i]
-        return answer    
-
-
-
-
-        
+        postfix = 1
+        for i in range(len(nums) -1, -1, -1):
+            res[i] *= postfix
+            postfix *= nums[i]
+        return res   
