@@ -6,33 +6,17 @@ class Solution(object):
         """
 
         stack = []
-
-        # Store matching opening brackets for each closing bracket
-        pairs = {
-            ')': '(',
-            '}': '{',
-            ']': '['
-        }
-
-        for char in s:
-
-            # If it is an opening bracket
-            if char not in pairs:
-                stack.append(char)
-
-            # If it is a closing bracket
+        for bracket in s:
+            if bracket == "(" or bracket == "[" or bracket == "{":
+                stack.append(bracket)
             else:
-
-                # No opening bracket available
-                if not stack:
+                if len(stack) == 0:
                     return False
-
-                # Check whether the top opening bracket matches
-                if stack[-1] == pairs[char]:
-                    stack.pop()
-
+                ch = stack.pop()
+                if(
+                    (bracket == ")" and ch =="(")or(bracket == "]" and ch == "[")or(bracket == "}" and ch =="{")):
+                    continue
                 else:
-                    return False
-
-        # All brackets must be closed
+                     return False
         return len(stack) == 0
+       
